@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>HIRU MOD - Get Key</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    .box {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 15px #ff004c;
+    }
+    h2 { color: #ff004c; }
+    #key {
+      font-size: 18px;
+      background: #000;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 15px 0;
+      word-break: break-all;
+    }
+    button {
+      background: #ff004c;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover { background: #ff3366; }
+    .note {
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>HIRU MOD - GET KEY 24H</h2>
+  <div id="key">Đang tạo key...</div>
+  <button onclick="copyKey()">📋 Copy Key</button>
+  <div class="note">
+    Mỗi key dùng được 1 thiết bị trong 24h
+  </div>
+</div>
+
+<script>
+function randomString(len) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < len; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+function generateKey() {
+  const key = "Hiru_" + randomString(10);
+  document.getElementById("key").innerText = key;
+}
+
+function copyKey() {
+  const key = document.getElementById("key").innerText;
+  navigator.clipboard.writeText(key).then(() => {
+    alert("Đã copy key: " + key);
+  });
+}
+
+generateKey();
+</script>
+
+</body>
+</html>
